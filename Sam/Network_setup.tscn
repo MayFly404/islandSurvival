@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sam/Assets/Font/OpenSans.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Sam/MultiplayerStuff/Network_setup.gd" type="Script" id=2]
+
+[node name="Network_setup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Multiplayer_config" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Create Server" type="Button" parent="Multiplayer_config"]
+margin_right = 441.0
+margin_bottom = 112.0
+custom_fonts/font = ExtResource( 1 )
+text = "Create Server"
+
+[node name="Join Server" type="Button" parent="Multiplayer_config"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -441.0
+margin_bottom = 112.0
+custom_fonts/font = ExtResource( 1 )
+text = "Join Server"
+
+[node name="Server_ip" type="LineEdit" parent="Multiplayer_config"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.5
+margin_top = -49.0
+margin_right = 240.5
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 1 )
+align = 1
+placeholder_text = "IP Address"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Device_ip_address" type="Label" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -110.0
+margin_bottom = -22.0
+custom_fonts/font = ExtResource( 1 )
+
+[connection signal="ready" from="Multiplayer_config" to="." method="_on_Multiplayer_config_ready"]
+[connection signal="pressed" from="Multiplayer_config/Create Server" to="." method="_on_Create_Server_pressed"]
+[connection signal="pressed" from="Multiplayer_config/Join Server" to="." method="_on_Join_Server_pressed"]
